@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trợ lý đổi chuyến · T3 Du lịch</title>
+  <style>
+    :root{--ink:#18231f;--muted:#68746e;--line:#e1e8e3;--paper:#f4f7f4;--card:#fff;--green:#176b50;--green-soft:#e9f5ef;--amber:#80520b;--amber-soft:#fff4da;--red:#a43830;--red-soft:#fff0ed;--blue:#315d8a;--blue-soft:#edf4fb;--shadow:0 16px 44px #15251b12}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 "Segoe UI",Arial,sans-serif}button{font:inherit;cursor:pointer}header{background:#fff;border-bottom:1px solid var(--line);padding:14px max(20px,calc((100vw - 1160px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;font-weight:750}.logo{width:36px;height:36px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:18px}.header-note{font-size:13px;color:var(--muted)}
+    main{max-width:1160px;margin:28px auto;padding:0 20px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.75fr);gap:22px;align-items:start}.app,.side-card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.app{overflow:hidden}.app-head{padding:21px 24px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}.app-head h1{font-size:20px;margin:0}.app-head p{margin:3px 0 0;color:var(--muted);font-size:13px}.tag{font-size:12px;font-weight:700;color:var(--green);background:var(--green-soft);padding:6px 10px;border-radius:99px;white-space:nowrap}.content{padding:20px 24px 24px}.flight-cancelled{background:var(--red-soft);border:1px solid #f3d2cc;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center}.flight-cancelled strong{display:block;color:var(--red);font-size:14px}.flight-cancelled span{font-size:13px;color:#74514c}.route{font-size:13px;font-weight:700}.pax{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 18px}.pax span{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:5px 9px;color:#43524a}.message{display:flex;gap:10px;align-items:flex-start;margin:8px 0 16px}.avatar{width:30px;height:30px;border-radius:10px;background:#e6f3ed;color:var(--green);display:grid;place-items:center;font-weight:800;flex:none}.bubble{background:#f6f8f6;border:1px solid var(--line);padding:13px 15px;border-radius:4px 15px 15px 15px;max-width:620px}.bubble p{margin:0 0 8px}.bubble p:last-child{margin-bottom:0}.source{margin-top:10px;padding:9px 11px;border-left:3px solid #90b8a4;background:#fff;border-radius:0 9px 9px 0;color:#4b5b52;font-size:12px}.ai-label{font-size:11px;color:var(--muted);font-weight:700;margin-bottom:4px}.seat-alert{margin:17px 0 12px;background:var(--amber-soft);border:1px solid #f0dda8;border-radius:12px;padding:12px 14px;color:#674a17;font-size:13px}.seat-alert b{color:#593c0a}.section-title{font-size:14px;font-weight:750;margin:20px 0 8px}.option{border:1.5px solid var(--line);border-radius:13px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0}.option.selected{border-color:var(--green);background:#f2faf6;box-shadow:0 0 0 2px #176b5010}.option.disabled{background:#f7f7f5;color:#77817b}.opt-main{display:flex;align-items:center;gap:12px}.radio{width:18px;height:18px;border:1.5px solid #aab6ae;border-radius:50%;flex:none}.selected .radio{border:5px solid var(--green)}.option.disabled .radio{border-color:#d5d9d6}.opt-main b{font-size:14px}.opt-main small{display:block;color:var(--muted);font-size:12px}.seat-count{font-size:12px;color:var(--green);font-weight:700;text-align:right}.seat-count.no{color:#737d76}.button-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.btn{border:1px solid #d8e0da;background:#fff;color:var(--ink);border-radius:10px;padding:10px 14px;font-weight:700;font-size:13px}.btn:hover{filter:brightness(.97)}.btn.primary{background:var(--green);border-color:var(--green);color:#fff}.btn.primary:disabled{background:#a9b9b0;border-color:#a9b9b0;cursor:not-allowed}.btn.ghost{border-color:transparent;background:transparent;color:var(--muted)}.btn.danger{color:var(--red);border-color:#efd1cd}.hold-card{margin-top:16px;border:1px solid #bee0cd;background:var(--green-soft);padding:13px 15px;border-radius:12px;display:none}.hold-card.show{display:block}.hold-title{font-weight:750;color:#15563f}.timer{font-variant-numeric:tabular-nums;font-weight:800}.confirm-card{display:none;margin-top:12px;border:1px solid #ccdbea;background:var(--blue-soft);border-radius:12px;padding:14px}.confirm-card.show{display:block}.confirm-card h3{font-size:14px;margin:0 0 6px}.confirm-card p{font-size:12px;color:#405369;margin:4px 0}.success{display:none;margin-top:14px;padding:15px;border-radius:12px;background:var(--green-soft);border:1px solid #bee0cd}.success.show{display:block}.toast{display:none;margin:12px 0;padding:11px 13px;border-radius:10px;background:#f5f7f6;border:1px solid var(--line);font-size:13px}.toast.show{display:block}.divider{height:1px;background:var(--line);margin:20px 0}.refund-note{font-size:12px;color:var(--muted)}
+    aside{display:flex;flex-direction:column;gap:14px}.side-card{padding:17px 18px}.side-card h2{font-size:15px;margin:0 0 10px}.side-card p{font-size:13px;color:var(--muted);margin:7px 0}.principle{display:flex;gap:9px;margin:11px 0;font-size:12px;color:#4d5c53}.num{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:white;font-size:11px;font-weight:800;flex:none}.proof{font-size:12px;padding:9px 10px;border-radius:9px;background:#f6f8f6;color:#425148;margin-top:8px}.promise{border-left:3px solid var(--green);padding:8px 11px;background:#f3faf6;font-size:13px;font-weight:650}.mock-label{font-size:11px;color:var(--muted);margin-top:12px}.overlay{position:fixed;inset:0;background:#12231db0;display:none;align-items:center;justify-content:center;padding:18px;z-index:5}.overlay.show{display:flex}.dialog{width:min(470px,100%);background:#fff;border-radius:18px;padding:22px;box-shadow:0 20px 70px #0003}.dialog h2{font-size:18px;margin:0 0 8px}.dialog p{color:#526057;font-size:13px}.warning{background:var(--amber-soft);border:1px solid #f0dda8;padding:11px;border-radius:10px;font-size:12px;margin:12px 0}.dialog label{display:flex;gap:8px;align-items:flex-start;font-size:12px;margin:13px 0}.dialog input{margin-top:3px}.dialog-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}.footer{max-width:1160px;margin:0 auto;padding:0 20px 24px;color:var(--muted);font-size:11px}
+    @media(max-width:800px){main{grid-template-columns:1fr;margin:16px auto}.app-head{padding:18px}.content{padding:16px}.side-card{padding:15px}.header-note{display:none}}@media(max-width:440px){.flight-cancelled{align-items:flex-start;flex-direction:column}.option{padding:11px}.app-head h1{font-size:18px}}
+    /* LAB5 redesign: a wide booking workspace, distinct from the instructor's phone/chat sample. */
+    :root{--ink:#172335;--muted:#697789;--line:#d9e1eb;--paper:#edf1f6;--green:#176b55;--green-soft:#e7f4ee;--amber:#79500d;--amber-soft:#fff3d8;--red:#a43a38;--red-soft:#fff0ee;--blue:#345f91;--blue-soft:#edf4fc;--shadow:0 8px 25px #20324a0b}
+    body{background:#edf1f6;color:var(--ink);font-family:"Segoe UI",Arial,sans-serif}
+    header{background:#17263d;color:#fff;border:0;padding:13px max(22px,calc((100vw - 1160px)/2))}
+    .brand{letter-spacing:.1px}.logo{background:#e8b95c;color:#17263d;border-radius:9px}.brand span:last-child span{color:#b9c5d6!important}.header-note{color:#bac6d7}
+    main{display:block;max-width:1160px;margin:26px auto 20px}
+    .app{border-radius:14px;overflow:hidden;border:1px solid #d6deea;box-shadow:0 10px 30px #263c570d}
+    .app-head{position:relative;background:#e1e9f3;border:0;padding:20px 25px 18px;display:block}
+    .app-head:before{content:"HÀNH TRÌNH ĐANG XỬ LÝ  /  T3–02";display:block;font-size:10px;letter-spacing:1.5px;font-weight:800;color:#607692;margin-bottom:7px}
+    .app-head h1{font-size:22px;letter-spacing:-.4px;color:#17263d}.app-head p{font-size:13px;color:#52647d}
+    .app-head .tag{position:absolute;right:25px;top:25px;background:#fff;color:#365b54;border:1px solid #c9ddd5;border-radius:6px;text-transform:uppercase;letter-spacing:.5px;font-size:10px}
+    .content{padding:20px 24px 23px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:11px 13px;align-items:start}
+    .flight-cancelled{grid-column:span 8;grid-row:1;min-height:83px;border-radius:10px;padding:13px 16px;background:#fff8f7;border-color:#edd6d4}
+    .flight-cancelled strong{font-size:12px;letter-spacing:.65px;text-transform:uppercase;color:#a43a38}.flight-cancelled span{display:block;margin-top:3px;font-size:12px}.route{text-align:right;color:#35475e;font-size:12px;line-height:1.55}
+    .pax{grid-column:span 4;grid-row:1;min-height:83px;margin:0;padding:10px 13px;border:1px solid var(--line);border-radius:10px;background:#f7f9fc;display:flex;flex-direction:column;justify-content:center;gap:5px}.pax span{width:max-content;max-width:100%;font-size:11px;background:#fff;padding:3px 8px}
+    .message{grid-column:1/-1;grid-row:2;margin:5px 0 1px;gap:9px}.avatar{border-radius:8px;background:#e0e9f5;color:#294b70}.bubble{max-width:none;flex:1;background:#f7f9fc;border-radius:4px 11px 11px 11px;padding:12px 14px}.ai-label{letter-spacing:.8px;color:#527091;font-size:10px}.bubble p{font-size:13px}.source{background:#fff;border-left-color:#6688ae}
+    .seat-alert{grid-column:span 4;grid-row:4;margin:0;border-radius:10px;align-self:stretch;display:flex;flex-direction:column;justify-content:center;font-size:12px}.section-title{grid-column:1/-1;grid-row:3;margin:5px 0 -3px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#596b82}
+    .option{grid-column:span 4;grid-row:4;margin:0;min-height:72px;border-radius:10px;background:#fff;padding:12px}.option[data-flight="BM 217"]{grid-column:span 4}.opt-main{gap:10px}.opt-main b{font-size:13px}.opt-main small{font-size:11px}.seat-count{font-size:10px}.option:hover:not(.disabled){border-color:#8ea8c3;transform:translateY(-1px)}
+    .button-row{grid-column:1/-1;margin-top:2px;gap:8px}.btn{border-radius:7px;padding:9px 12px;font-size:12px}.btn.primary{background:#1b7058;border-color:#1b7058}.btn.ghost{border:1px solid #d8e0da;background:#fff}
+    .hold-card{grid-column:span 5;margin-top:3px;border-radius:10px}.confirm-card{grid-column:span 7;margin-top:3px;border-radius:10px}.confirm-card h3{font-size:13px}.confirm-card p{font-size:11px}.success,.toast{grid-column:1/-1}.divider{grid-column:1/-1;margin:6px 0}.refund-note{grid-column:1/-1;padding:9px 11px;background:#f8f9fb;border:1px solid var(--line);border-radius:8px;font-size:11px}
+    aside{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+    .side-card{border-radius:11px;padding:14px 15px;box-shadow:none}.side-card h2{font-size:12px;letter-spacing:.35px;text-transform:uppercase;color:#405672;margin-bottom:9px}.side-card p{font-size:11px;line-height:1.5}.proof{font-size:10px;border-radius:6px;padding:7px 8px}.principle{font-size:10px;line-height:1.45;margin:8px 0}.num{width:19px;height:19px;background:#345f91;font-size:10px}.promise{border-left-color:#d0a13d;background:#fff9e9;font-size:12px}
+    .footer{max-width:1160px}.dialog{border-radius:12px}.dialog h2{font-size:17px}
+    @media(max-width:850px){aside{grid-template-columns:repeat(2,minmax(0,1fr))}.flight-cancelled{grid-column:span 7}.pax{grid-column:span 5}.option{grid-column:span 6}.option[data-flight="BM 217"]{grid-column:span 6}.seat-alert{grid-column:span 6}.hold-card,.confirm-card{grid-column:1/-1}}
+    @media(max-width:560px){main{margin:12px auto;padding:0 12px}.app-head{padding:17px 16px}.app-head:before{font-size:9px}.app-head h1{font-size:19px}.app-head .tag{position:static;display:inline-block;margin-top:10px}.content{padding:14px;grid-template-columns:1fr}.flight-cancelled,.pax,.message,.seat-alert,.section-title,.option,.option[data-flight="BM 217"],.button-row,.hold-card,.confirm-card,.success,.toast,.divider,.refund-note{grid-column:1;grid-row:auto}.pax{align-items:flex-start}.option{min-height:64px}.button-row .btn{flex:1}.side-card{padding:13px}.footer{padding:0 14px 18px}}
+    /* Numbered callouts match the locations described in spec.md §5. */
+    .source,.seat-alert,.section-title,.hold-title,.confirm-card h3,#staffBtn,#confirmBtn,#editBtn{position:relative}
+    .source:before,.seat-alert:before,.section-title:before,.hold-title:before,.confirm-card h3:before,#staffBtn:before,#confirmBtn:before,#editBtn:before{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#345f91;color:#fff;font-size:10px;font-weight:800;line-height:1;margin-right:6px;vertical-align:middle;content:""}
+    .source:before{content:"1"}.seat-alert:before{content:"2"}.section-title:before{content:"3"}#staffBtn:before{content:"4"}.hold-title:before{content:"5"}.confirm-card h3:before{content:"5"}#confirmBtn:before,#editBtn:before{content:"3"}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="logo">↗</span><span>Bay Mẫu <span style="font-weight:400;color:#68746e">· Đặt chỗ của tôi</span></span></div>
+    <div class="header-note">Trợ lý AI · Dữ liệu mô phỏng cho bài LAB5</div>
+  </header>
+  <main>
+    <section class="app" aria-label="Luồng chọn chuyến thay thế">
+      <div class="app-head"><div><h1>Chọn chuyến thay thế</h1><p>Trợ lý giúp bạn tìm chuyến; bạn xác nhận trước khi đổi vé.</p></div><span class="tag">AI đang hỗ trợ</span></div>
+      <div class="content">
+        <div class="flight-cancelled"><div><strong>Chuyến bay đã bị huỷ</strong><span>Do thời tiết · Không có bồi thường tiền mặt theo dữ liệu hãng Bay Mẫu</span></div><div class="route">BM 213<br>19:00 · 12/11</div></div>
+        <div class="pax"><span>Nguyễn Minh An · Người lớn</span><span>Nguyễn Gia Bình · 5 tuổi</span></div>
+        <div class="message"><div class="avatar">AI</div><div class="bubble"><div class="ai-label">TRỢ LÝ ĐẶT CHỖ</div><p>“Chuyến sớm nhất BM 217 lúc 21:00 chỉ còn <b>1 chỗ</b>, không đủ cho hai mẹ con. Mình chưa đổi vé.”</p><p>Các chuyến dưới đây còn đủ chỗ cho cả hai. Chọn chuyến bạn muốn giữ trong 20 phút.</p><div class="source"><b>Căn cứ:</b> đặt chỗ TRV-7Q2K có 2 hành khách · kết quả tra cứu chuyến thay thế bên dưới.</div></div></div>
+
+        <div class="seat-alert"><b>BM 217 · 21:00 — Không thể chọn</b><br>Chỉ còn 1 chỗ cho 2 hành khách. Không có nút giữ hoặc đổi chuyến này.</div>
+        <div class="section-title">Chuyến có đủ chỗ cho 2 hành khách</div>
+        <button class="option" data-flight="BM 201" type="button" aria-pressed="false"><span class="opt-main"><span class="radio"></span><span><b>BM 201</b><small>13/11 · 07:00 · Hà Nội → TP.HCM</small></span></span><span class="seat-count">Còn 9 chỗ</span></button>
+        <button class="option" data-flight="BM 205" type="button" aria-pressed="false"><span class="opt-main"><span class="radio"></span><span><b>BM 205</b><small>13/11 · 09:30 · Hà Nội → TP.HCM</small></span></span><span class="seat-count">Còn 4 chỗ</span></button>
+        <div class="button-row"><button id="holdBtn" class="btn primary" disabled>Giữ chuyến đã chọn</button><button id="staffBtn" class="btn">Gặp nhân viên</button><button id="refundBtn" class="btn ghost">Xem lựa chọn hoàn vé</button></div>
+        <div id="holdCard" class="hold-card"><div class="hold-title">Đã giữ chỗ tạm thời · <span id="holdFlight"></span></div><div style="font-size:12px;margin-top:3px">Cả hai hành khách · Vé chưa đổi · Tự nhả sau <span class="timer" id="timer">20:00</span></div></div>
+        <div id="confirmCard" class="confirm-card"><h3>Xác nhận trước khi đổi vé</h3><p id="confirmSummary"></p><p>Đổi vé sẽ dùng lần đổi miễn phí duy nhất. Kiểm tra chuyến và cả hai hành khách trước khi tiếp tục.</p><div class="button-row"><button id="confirmBtn" class="btn primary">Xác nhận đổi vé</button><button id="editBtn" class="btn">Chọn chuyến khác</button></div></div>
+        <div id="success" class="success"><b>Đã đổi vé thành công trong bản mô phỏng.</b><div id="successText" style="font-size:13px;margin-top:4px"></div><button id="resetBtn" class="btn" style="margin-top:10px">Làm lại luồng</button></div>
+        <div id="toast" class="toast" role="status"></div>
+        <div class="divider"></div>
+        <div class="refund-note"><b>Hoàn vé:</b> gửi yêu cầu xong không thể huỷ. Nếu chọn hoàn, hệ thống sẽ nêu rõ hậu quả và yêu cầu bạn xác nhận ở bước riêng trước khi gửi.</div>
+      </div>
+    </section>
+    <aside>
+      <section class="side-card"><h2>Lời hứa với hành khách</h2><div class="promise">“Mình tìm và giữ lựa chọn phù hợp; bạn xác nhận chuyến và hành khách rồi mình mới đổi.”</div><p>Nếu chưa xác nhận trong 20 phút, chỗ được nhả và vé chưa đổi.</p></section>
+      <section class="side-card"><h2>Căn cứ hiển thị</h2><div class="proof"><b>Đặt chỗ:</b> TRV-7Q2K · 2 hành khách</div><div class="proof"><b>BM 217:</b> 1 chỗ · không đủ cho 2 người</div><div class="proof"><b>BM 201 / BM 205:</b> lần lượt còn 9 / 4 chỗ theo dữ liệu dựng</div><p>Chỗ có thể thay đổi trước khi giữ; nếu giữ thất bại, trợ lý sẽ tra lại và không tự đổi vé.</p></section>
+      <section class="side-card"><h2>Nguyên tắc trên màn hình</h2>
+        <div class="principle"><span class="num">1</span><span><b>G2 · Làm rõ căn cứ/độ chắc:</b> số chỗ và booking được đưa ra để khách tự kiểm tra.</span></div>
+        <div class="principle"><span class="num">2</span><span><b>G10 · Thu hẹp khi chưa chắc:</b> chuyến thiếu chỗ bị vô hiệu; AI hỏi khách chọn thay vì tự quyết.</span></div>
+        <div class="principle"><span class="num">3</span><span><b>G9 · Sửa dễ:</b> khách có thể đổi lựa chọn trước khi xác nhận cuối.</span></div>
+        <div class="principle"><span class="num">4</span><span><b>PAIR · Errors & graceful failure:</b> đường gặp nhân viên luôn có sẵn.</span></div>
+      </section>
+      <section class="side-card"><h2>Quyền của AI trong prototype</h2><p><b>Tự làm có điều kiện:</b> tra cứu và giữ chỗ sau khi khách chọn chuyến, đủ chỗ cho hai người.</p><p><b>Cần khách xác nhận:</b> đổi vé, sau khi thấy chuyến/hành khách và hậu quả dùng lượt đổi.</p><p><b>Không làm:</b> chọn BM 217 cho cả hai khi chỉ còn một chỗ.</p></section>
+    </aside>
+  </main>
+  <div class="footer">LAB5 · T3 Du lịch · Giao diện mô phỏng, không kết nối hãng bay, không gọi AI hoặc thực hiện giao dịch thật.</div>
+
+  <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+    <div class="dialog"><h2 id="dialogTitle">Xác nhận yêu cầu hoàn vé?</h2><p>Yêu cầu hoàn vé không thể huỷ sau khi gửi. Theo thông tin tham khảo của track, xử lý có thể tới 90 ngày; tiền hoàn theo phương thức thanh toán hoặc voucher tuỳ trường hợp.</p><div class="warning">Chuyến BM 213 bị huỷ do thời tiết. Dữ liệu hãng Bay Mẫu cho biết trường hợp này không có bồi thường tiền mặt. Chưa có yêu cầu hoàn nào được gửi.</div><label><input id="refundCheck" type="checkbox"> Tôi xác nhận muốn xem bước gửi yêu cầu hoàn cho cả hai hành khách.</label><div class="dialog-actions"><button id="closeDialog" class="btn">Quay lại</button><button id="submitRefund" class="btn primary" disabled>Tiếp tục xác nhận</button></div><div id="refundStatus" class="toast"></div></div>
+  </div>
+  <script>
+    const options=[...document.querySelectorAll('.option')];
+    const holdBtn=document.getElementById('holdBtn');
+    const holdCard=document.getElementById('holdCard');
+    const confirmCard=document.getElementById('confirmCard');
+    const success=document.getElementById('success');
+    const toast=document.getElementById('toast');
+    const overlay=document.getElementById('overlay');
+    let selected=null, seconds=1200, interval=null;
+    function message(text){toast.textContent=text;toast.classList.add('show');}
+    options.forEach(button=>button.addEventListener('click',()=>{
+      if(holdCard.classList.contains('show')) return;
+      selected=button.dataset.flight;
+      options.forEach(item=>{item.classList.toggle('selected',item===button);item.setAttribute('aria-pressed',item===button?'true':'false')});
+      holdBtn.disabled=false;toast.classList.remove('show');
+    }));
+    holdBtn.addEventListener('click',()=>{
+      if(!selected) return;
+      seconds=1200;
+      document.getElementById('holdFlight').textContent=selected;
+      document.getElementById('confirmSummary').textContent=`BM 213 → ${selected} · 2 hành khách (Nguyễn Minh An và Nguyễn Gia Bình) · 0 đồng theo dữ liệu dựng.`;
+      holdCard.classList.add('show');confirmCard.classList.add('show');holdBtn.disabled=true;
+      message(`Đã giữ ${selected} trong bản mô phỏng. Vé chưa đổi; bạn cần xác nhận riêng.`);
+      interval=setInterval(()=>{seconds--;const mm=String(Math.floor(seconds/60)).padStart(2,'0'),ss=String(seconds%60).padStart(2,'0');document.getElementById('timer').textContent=`${mm}:${ss}`;if(seconds<=0){clearInterval(interval);holdCard.classList.remove('show');confirmCard.classList.remove('show');holdBtn.disabled=!selected;message('Hết 20 phút: chỗ được nhả trong bản mô phỏng. Vé chưa đổi. Hãy tra lại chỗ trước khi tiếp tục.')}},1000);
+    });
+    document.getElementById('confirmBtn').addEventListener('click',()=>{
+      clearInterval(interval);confirmCard.classList.remove('show');success.classList.add('show');
+      document.getElementById('successText').textContent=`${selected} đã được chọn cho hai hành khách. Đây là trạng thái mô phỏng; không có giao dịch thật.`;
+      holdCard.classList.remove('show');options.forEach(o=>o.disabled=true);message('Thao tác đổi vé chỉ được mô phỏng sau nút xác nhận cuối.');
+    });
+    document.getElementById('editBtn').addEventListener('click',()=>{clearInterval(interval);seconds=1200;holdCard.classList.remove('show');confirmCard.classList.remove('show');options.forEach(o=>o.disabled=false);holdBtn.disabled=!selected;message('Bạn có thể chọn lại chuyến. Chưa có vé nào được đổi.');});
+    document.getElementById('resetBtn').addEventListener('click',()=>location.reload());
+    document.getElementById('staffBtn').addEventListener('click',()=>message('Đã tạo yêu cầu chuyển nhân viên trong bản mô phỏng. Vé chưa đổi; nhân viên sẽ nhận tóm tắt đặt chỗ và lựa chọn hiện tại.'));
+    document.getElementById('refundBtn').addEventListener('click',()=>{overlay.classList.add('show');document.getElementById('refundStatus').classList.remove('show')});
+    document.getElementById('closeDialog').addEventListener('click',()=>overlay.classList.remove('show'));
+    document.getElementById('refundCheck').addEventListener('change',e=>document.getElementById('submitRefund').disabled=!e.target.checked);
+    document.getElementById('submitRefund').addEventListener('click',()=>{const status=document.getElementById('refundStatus');status.textContent='Đây là prototype: chưa gửi yêu cầu hoàn. Bước tiếp theo thực tế cần hiển thị xác nhận cuối cho từng hành khách.';status.classList.add('show')});
+    overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('show')});
+  </script>
+</body>
+</html>
